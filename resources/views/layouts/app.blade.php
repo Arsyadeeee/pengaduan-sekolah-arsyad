@@ -1,36 +1,57 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+<body class="bg-gray-100 font-sans">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+<div class="min-h-screen flex flex-col">
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+            <!-- LOGO + TITLE -->
+            <div class="flex items-center space-x-3">
+                <img src="{{ asset('https://pegerarea.com/wp-content/uploads/2021/09/logo-1-e1632906395587.png') }}" class="h-9 w-9 object-contain">
+                <h1 class="text-lg font-semibold text-gray-800">
+                    Dashboard Admin
+                </h1>
+            </div>
+
+            <!-- USER -->
+            <div class="flex items-center space-x-6">
+
+            <div class="text-sm font-medium text-gray-600 border-r pr-6 border-gray-200">
+                <span class="text-gray-400 mr-1"></span> 
+                {{ Auth::user()->name ?? 'Administrator' }}
+
+            </div>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="text-sm text-red-500 hover:text-red-700">
+                        Logout
+                    </button>
+                </form>
+            </div>
+
         </div>
-    </body>
+    </nav>
+
+    <!-- CONTENT -->
+    <main class="flex-1 py-8">
+        <div class="max-w-7xl mx-auto px-6">
+            {{ $slot }}
+        </div>
+    </main>
+
+</div>
+
+</body>
 </html>

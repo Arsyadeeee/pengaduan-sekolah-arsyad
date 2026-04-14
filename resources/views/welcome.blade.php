@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel Custom Welcome</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <script>
         tailwind.config = {
           theme: {
@@ -22,13 +24,26 @@
           }
         }
     </script>
+
+    <style>
+        .hero-bg {
+            background-image: url('https://wallpapercat.com/w/full/3/9/5/84699-3840x2160-desktop-4k-86-tv-series-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
-<body class="antialiased bg-[#0a0a0a] text-white/50 flex items-center justify-center min-h-screen selection:bg-[#FF2D20] selection:text-white">
+
+<body class="antialiased min-h-screen hero-bg flex items-center justify-center">
 
     <div class="relative w-full max-w-4xl px-6">
         
-        <main class="grid grid-cols-1 md:grid-cols-2 overflow-hidden bg-[#161616] border border-white/10 rounded-[2.5rem] shadow-2xl h-[500px]">
+        <!-- CARD -->
+        <main class="grid grid-cols-1 md:grid-cols-2 overflow-hidden bg-[#161616]/70 backdrop-blur-lg border border-white/10 rounded-[2.5rem] shadow-2xl h-[500px]">
             
+            <!-- KIRI -->
             <div class="p-12 flex flex-col justify-center">
                 <h2 class="text-3xl font-bold text-white mb-6">
                     Aplikasi Pengaduan Sarana Sekolah
@@ -48,21 +63,26 @@
                 </p>
             </div>
 
-            <div class="relative bg-[#111] flex items-center justify-center overflow-hidden h-full">
+            <!-- KANAN (LOGO) -->
+            <div class="relative bg-[#111]/40 flex items-center justify-center overflow-hidden h-full">
                 
+                <!-- Glow background -->
                 <div class="absolute w-48 h-48 bg-[#FF2D20] rounded-full blur-[100px] opacity-20"></div>
 
+                <!-- LOGO -->
                 <img 
                     src="https://pegerarea.com/wp-content/uploads/2021/09/logo-1-e1632906395587.png" 
-                    class="absolute inset-0 w-full h-full object-cover animate-float-char"
+                    class="w-40 h-40 object-contain animate-float-char z-10 drop-shadow-[0_0_20px_rgba(255,45,32,0.6)]"
                 />
 
+                <!-- Gradient overlay -->
                 <div class="absolute inset-0 bg-gradient-to-r from-[#161616] via-transparent to-transparent hidden md:block z-20"></div>
             </div>
 
         </main>
 
-        <p class="mt-8 text-center text-xs text-white/10 italic">
+        <!-- FOOTER -->
+        <p class="mt-8 text-center text-xs text-white/20 italic">
             Create By ARSYAD KAMAL MUNIF
         </p>
     </div>
